@@ -100,5 +100,7 @@ def main() -> int:
     load_config()
     command = tuple(get_command())
     LOGGER.info('Running: %s', command)
-    completed_process = run(command, env=get_environ(), check=False)
+    env = get_environ()
+    LOGGER.info('Environment: %s', env)
+    completed_process = run(command, env=env, check=False)
     return completed_process.returncode
