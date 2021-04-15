@@ -1,0 +1,12 @@
+[Unit]
+Description=Digital Signage HTML5 application
+After=nginx.service
+Requres=nginx.service
+
+[Service]
+User=digsig
+Group=digsig
+ExecStart=/usr/bin/html5ds
+
+[Install]
+WantedBy=multi-user.target
