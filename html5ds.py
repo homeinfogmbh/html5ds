@@ -1,6 +1,7 @@
 """Launch HTML5-based digital signage applications in a web browser."""
 
 from configparser import ConfigParser
+from logging import INFO, basicConfig, getLogger
 from os import environ
 from pathlib import Path
 from subprocess import run
@@ -36,6 +37,8 @@ DEFAULT_DISK_CACHE_DIR = '/dev/null'
 DEFAULT_VERBOSITY = 1
 DEFAULT_URL = 'http://localhost/index.html'
 DEFAULT_DISPLAY = ':0'
+FORMAT = '[%(levelname)s] %(name)s: %(message)s'
+LOGGER = getLogger('html5ds')
 
 
 def load_config(file: Path = CONFIG_FILE) -> list[str]:
@@ -93,7 +96,9 @@ def get_environ(config: ConfigParser = CONFIG) -> dict:
 def main() -> int:
     """Runs the program."""
 
+    basicConfig(format=FORMAT, level=INFO)
     load_config()
     command = tuple(get_command())
+    LOGGER.info('Running: %s', command)
     completed_process = run(command, env=get_environ(), check=False)
     return completed_process.returncode
