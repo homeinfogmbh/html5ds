@@ -1,7 +1,7 @@
 [Unit]
 Description=Digital Signage HTML5 application
 After=nginx.service
-Requres=nginx.service
+Requires=nginx.service
 
 [Service]
 User=digsig
