@@ -5,17 +5,15 @@ from logging import INFO, basicConfig, getLogger
 from os import environ
 from pathlib import Path
 from subprocess import run
-from typing import Iterator
+from typing import Iterator, NamedTuple
 
 
 __all__ = [
     'CONFIG',
     'CONFIG_FILE',
     'DEFAULT_EXECUTABLE',
-    'DEFAULT_WIDTH',
-    'DEFAULT_HEIGHT',
-    'DEFAULT_POSX',
-    'DEFAULT_POSY',
+    'DEFAULT_POS',
+    'DEFAULT_RES',
     'DEFAULT_DISK_CACHE_DIR',
     'DEFAULT_VERBOSITY',
     'DEFAULT_URL',
@@ -26,13 +24,25 @@ __all__ = [
 ]
 
 
+class Position(NamedTuple):
+    """Represents a screen position."""
+
+    x: int
+    y: int
+
+
+class Resolution(NamedTuple):
+    """Represents a screen resolution."""
+
+    width: int
+    height: int
+
+
 CONFIG = ConfigParser()
 CONFIG_FILE = Path('/etc/html5ds.conf')
 DEFAULT_EXECUTABLE = '/usr/bin/chromium'
-DEFAULT_WIDTH = 1920
-DEFAULT_HEIGHT = 1080
-DEFAULT_POSX = 0
-DEFAULT_POSY = 0
+DEFAULT_POS = Position(0, 0)
+DEFAULT_RES = Resolution(1920, 1080)
 DEFAULT_DISK_CACHE_DIR = '/dev/null'
 DEFAULT_VERBOSITY = 1
 DEFAULT_URL = 'http://localhost/index.html'
@@ -58,13 +68,13 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     if config.getboolean('webbrowser', 'fullscreen', fallback=True):
         yield '--fullscreen'
 
-    width = config.getint('screen', 'width', fallback=DEFAULT_WIDTH)
-    height = config.getint('screen', 'height', fallback=DEFAULT_HEIGHT)
+    width = config.getint('screen', 'width', fallback=DEFAULT_RES.width)
+    height = config.getint('screen', 'height', fallback=DEFAULT_RES.height)
     window_size = ','.join(map(str, (width, height)))
     yield f'--window-size={window_size}'
 
-    posx = config.getint('screen', 'posx', fallback=DEFAULT_POSX)
-    posy = config.getint('screen', 'posy', fallback=DEFAULT_POSY)
+    posx = config.getint('screen', 'posx', fallback=DEFAULT_POS.x)
+    posy = config.getint('screen', 'posy', fallback=DEFAULT_POS.y)
     window_position = ','.join(map(str, (posx, posy)))
     yield f'--window-position={window_position}'
 
