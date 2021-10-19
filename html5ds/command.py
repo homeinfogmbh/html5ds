@@ -22,8 +22,8 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     if config.getboolean('webbrowser', 'fullscreen', fallback=True):
         yield '--fullscreen'
 
-    width = config.getint('screen', 'width',
-                          fallback=Defaults.RESOLUTION.width)
+    width = config.getint(
+        'screen', 'width', fallback=Defaults.RESOLUTION.width)
     height = config.getint(
         'screen', 'height', fallback=Defaults.RESOLUTION.height)
     window_size = ','.join(map(str, (width, height)))
