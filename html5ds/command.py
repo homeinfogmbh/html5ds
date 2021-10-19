@@ -26,13 +26,11 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
         'screen', 'width', fallback=Defaults.RESOLUTION.width)
     height = config.getint(
         'screen', 'height', fallback=Defaults.RESOLUTION.height)
-    window_size = ','.join(map(str, (width, height)))
-    yield f'--window-size={window_size}'
+    yield f'--window-size={width},{height}'
 
     posx = config.getint('screen', 'posx', fallback=Defaults.POSITION.x)
     posy = config.getint('screen', 'posy', fallback=Defaults.POSITION.y)
-    window_position = ','.join(map(str, (posx, posy)))
-    yield f'--window-position={window_position}'
+    yield f'--window-position={posx},{posy}'
 
     disk_cache_dir = config.get(
         'webbrowser', 'disk_cache_dir', fallback=Defaults.DISK_CACHE_DIR)
