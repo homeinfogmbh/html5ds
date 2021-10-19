@@ -13,8 +13,8 @@ setup(
     author_email='<info@homeinfo.de>',
     maintainer='Richard Neumann',
     maintainer_email='<r.neumann@homeinfo.de>',
-    py_modules=['html5ds'],
-    entry_points={'console_scripts': ['html5ds = html5ds:main']},
+    packages=['html5ds'],
+    entry_points={'console_scripts': ['html5ds = html5ds.main:main']},
     data_files=[('/usr/lib/systemd/system', ['html5ds.service'])],
     description=('Browser wrapper for HTML5 digital sigange applications.')
 )
