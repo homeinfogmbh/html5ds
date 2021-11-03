@@ -39,8 +39,8 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     cache = config.get('webbrowser', 'disk_cache_dir', fallback=DISK_CACHE_DIR)
     yield f'--disk-cache-dir={cache}'
 
-    if target := config.getboolean('webbrowser', 'logging', fallback='stderr'):
-        yield f'--enable-logging={target}'
+    if log_target := config.get('webbrowser', 'logging', fallback='stderr'):
+        yield f'--enable-logging={log_target}'
 
     verbosity = config.getint('webbrowser', 'verbosity', fallback=VERBOSITY)
     yield f'--v={verbosity}'
