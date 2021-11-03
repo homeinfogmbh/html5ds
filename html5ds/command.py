@@ -8,6 +8,7 @@ from html5ds.config import CONFIG
 from html5ds.defaults import DISK_CACHE_DIR
 from html5ds.defaults import DISPLAY
 from html5ds.defaults import EXECUTABLE
+from html5ds.defaults import LOG_TARGET
 from html5ds.defaults import POSITION
 from html5ds.defaults import RESOLUTION
 from html5ds.defaults import URL
@@ -39,7 +40,7 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     cache = config.get('webbrowser', 'disk_cache_dir', fallback=DISK_CACHE_DIR)
     yield f'--disk-cache-dir={cache}'
 
-    if log_target := config.get('webbrowser', 'logging', fallback='stderr'):
+    if log_target := config.get('webbrowser', 'logging', fallback=LOG_TARGET):
         yield f'--enable-logging={log_target}'
 
     verbosity = config.getint('webbrowser', 'verbosity', fallback=VERBOSITY)
