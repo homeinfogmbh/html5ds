@@ -20,5 +20,4 @@ def main() -> int:
     LOGGER.info('Running: %s', command)
     env = get_environ()
     LOGGER.info('Environment: %s', env)
-    completed_process = run(command, env=env, check=False)
-    return completed_process.returncode
+    return run(command, env=env, check=False).returncode
