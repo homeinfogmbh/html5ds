@@ -8,6 +8,16 @@ Wants=xorg-server.service
 User=digsig
 Group=digsig
 ExecStart=/usr/bin/html5ds
+Restart=on-failure
+RestartSec=3
+# Make OOM killing likely.
+OOMScoreAdjust=1000
+# Enable cgroup memory limiting.
+MemoryAccounting=yes
+# Limit used memory to max. 60% of installed memory.
+MemoryMax=60%
+# Restart the application after one week.
+RuntimeMaxSec=1week
 
 [Install]
 WantedBy=multi-user.target
