@@ -46,6 +46,9 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     verbosity = config.getint('webbrowser', 'verbosity', fallback=VERBOSITY)
     yield f'--v={verbosity}'
 
+    if not config.getboolean('webbrowser', 'pinch', fallback=False):
+        yield '--disable-pinch'
+
     if args := config.get('webbrowser', 'options', fallback=None):
         yield from args.split()
 
