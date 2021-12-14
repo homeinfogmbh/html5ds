@@ -20,4 +20,4 @@ MemoryMax=60%
 RuntimeMaxSec=1week
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
