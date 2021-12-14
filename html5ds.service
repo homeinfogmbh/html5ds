@@ -3,6 +3,7 @@ Description=Digital Signage HTML5 application
 After=nginx.service
 Requires=nginx.service
 Wants=xorg-server.service
+Conflicts=application.service
 
 [Service]
 User=digsig
