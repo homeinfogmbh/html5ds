@@ -58,6 +58,7 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
 def get_environ(config: ConfigParser = CONFIG) -> dict:
     """Returns the environment for the subprocess."""
 
-    env = environ.copy()
-    env['DISPLAY'] = config.get('screen', 'display', fallback=DISPLAY)
-    return env
+    return {
+        **environ.copy(),
+        'DISPLAY': config.get('screen', 'display', fallback=DISPLAY)
+    }
