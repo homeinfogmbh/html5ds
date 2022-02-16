@@ -33,9 +33,9 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     height = config.getint('screen', 'height', fallback=RESOLUTION.height)
     yield f'--window-size={width},{height}'
 
-    posx = config.getint('screen', 'posx', fallback=POSITION.x)
-    posy = config.getint('screen', 'posy', fallback=POSITION.y)
-    yield f'--window-position={posx},{posy}'
+    pos_x = config.getint('screen', 'x', fallback=POSITION.x)
+    pos_y = config.getint('screen', 'y', fallback=POSITION.y)
+    yield f'--window-position={pos_x},{pos_y}'
 
     cache = config.get('webbrowser', 'disk_cache_dir', fallback=DISK_CACHE_DIR)
     yield f'--disk-cache-dir={cache}'
