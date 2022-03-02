@@ -42,7 +42,7 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     if log_target := config.get('webbrowser', 'logging', fallback=LOG_TARGET):
         yield f'--enable-logging={log_target}'
 
-    if verbosity := config.getint('webbrowser', 'verbosity'):
+    if verbosity := config.getint('webbrowser', 'verbosity', fallback=None):
         yield f'--v={verbosity}'
 
     if not config.getboolean('webbrowser', 'pinch', fallback=False):
