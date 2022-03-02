@@ -12,7 +12,6 @@ from html5ds.defaults import LOG_TARGET
 from html5ds.defaults import POSITION
 from html5ds.defaults import RESOLUTION
 from html5ds.defaults import URL
-from html5ds.defaults import VERBOSITY
 
 
 __all__ = ['get_command', 'get_environ']
@@ -43,8 +42,8 @@ def get_command(config: ConfigParser = CONFIG) -> Iterator[str]:
     if log_target := config.get('webbrowser', 'logging', fallback=LOG_TARGET):
         yield f'--enable-logging={log_target}'
 
-    verbosity = config.getint('webbrowser', 'verbosity', fallback=VERBOSITY)
-    yield f'--v={verbosity}'
+    if verbosity := config.getint('webbrowser', 'verbosity'):
+        yield f'--v={verbosity}'
 
     if not config.getboolean('webbrowser', 'pinch', fallback=False):
         yield '--disable-pinch'

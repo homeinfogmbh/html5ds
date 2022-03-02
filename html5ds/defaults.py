@@ -10,8 +10,7 @@ __all__ = [
     'LOG_TARGET',
     'POSITION',
     'RESOLUTION',
-    'URL',
-    'VERBOSITY'
+    'URL'
 ]
 
 
@@ -22,4 +21,3 @@ LOG_TARGET: str = 'stderr'
 POSITION: Position = Position(0, 0)
 RESOLUTION: Resolution = Resolution(1920, 1080)
 URL: str = 'http://localhost/index.html'
-VERBOSITY: int = 1
