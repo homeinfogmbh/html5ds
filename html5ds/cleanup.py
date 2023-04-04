@@ -25,8 +25,8 @@ def cleanup_chromium_crash_logs() -> None:
     """Remove chromium crash log files."""
 
     for dir_name in ['attachments', 'completed', 'new', 'pending']:
-        if (directory := chromium_config_dir().joinpath(dir_name)).is_dir():
-            for file in directory.iterdir():
+        if (path := chromium_crash_reports_dir().joinpath(dir_name)).is_dir():
+            for file in path.iterdir():
                 file.unlink()
 
 
