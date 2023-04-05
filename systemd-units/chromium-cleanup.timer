@@ -1,0 +1,10 @@
+[Unit]
+Description=Monthly cleanup of temporary chromium data
+
+[Timer]
+OnCalendar=monthly
+RandomizedDelaySec=3days
+Persistent=true
+
+[Install]
+WantedBy=timers.target

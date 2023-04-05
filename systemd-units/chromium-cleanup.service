@@ -1,0 +1,9 @@
+[Unit]
+Description=Chromium data cleanup
+
+[Service]
+User=digsig
+Group=digsig
+Type=oneshot
+ExecStart=/usr/bin/cleanup-chromium-cache
+ExecStart=/usr/bin/cleanup-chromium-crash-logs
