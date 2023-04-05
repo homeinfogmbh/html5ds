@@ -1,6 +1,6 @@
 """Cleanup of browser data."""
 
-from logging import basicConfig, getLogger
+from logging import INFO, basicConfig, getLogger
 from pathlib import Path
 from shutil import rmtree
 from typing import Iterator
@@ -17,7 +17,7 @@ LOGGER = getLogger(__file__)
 def cleanup_chromium_cache() -> None:
     """Clean up chromium crash logs."""
 
-    basicConfig(format=FORMAT)
+    basicConfig(format=FORMAT, level=INFO)
 
     for profile in chromium_profiles():
         if (cache := profile.joinpath('Cache')).is_dir():
@@ -34,7 +34,7 @@ def cleanup_chromium_cache() -> None:
 def cleanup_chromium_crash_logs() -> None:
     """Remove chromium crash log files."""
 
-    basicConfig(format=FORMAT)
+    basicConfig(format=FORMAT, level=INFO)
 
     for dir_name in ['attachments', 'completed', 'new', 'pending']:
         if (path := chromium_crash_reports_dir().joinpath(dir_name)).is_dir():
