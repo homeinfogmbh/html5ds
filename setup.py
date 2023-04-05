@@ -20,7 +20,7 @@ setup(
         'cleanup-chromium-crash-logs = '
             'html5ds.cleanup:cleanup_chromium_crash_logs',
         'html5ds-restart = html5ds.restart:restart',
-        'html5ds-stop = html5ds.restart:stop'
+        'html5ds-await-stop = html5ds.restart:await_stop'
     ]},
     data_files=[
         ('/usr/lib/systemd/system', [
