@@ -8,4 +8,5 @@ Type=oneshot
 ExecStart=+/usr/bin/html5ds-await-stop
 ExecStart=-/usr/bin/cleanup-chromium-cache
 ExecStart=-/usr/bin/cleanup-chromium-crash-logs
+ExecStart=-/usr/bin/cleanup-chromium-browser-metrics
 ExecStart=+/usr/bin/html5ds-restart

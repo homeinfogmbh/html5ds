@@ -19,6 +19,8 @@ setup(
         'cleanup-chromium-cache = html5ds.cleanup:cleanup_chromium_cache',
         'cleanup-chromium-crash-logs = '
             'html5ds.cleanup:cleanup_chromium_crash_logs',
+        'cleanup-chromium-browser-metrics = '
+            'html5ds.cleanup:cleanup_chromium_browser_metrics',
         'html5ds-restart = html5ds.restart:restart',
         'html5ds-await-stop = html5ds.restart:await_stop'
     ]},

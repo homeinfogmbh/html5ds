@@ -8,10 +8,26 @@ from typing import Iterator
 from html5ds.logging import FORMAT
 
 
-__all__ = ['cleanup_chromium_cache', 'cleanup_chromium_crash_logs']
+__all__ = [
+    'cleanup_chromium_browser_metrics',
+    'cleanup_chromium_cache',
+    'cleanup_chromium_crash_logs'
+]
 
 
 LOGGER = getLogger(__file__)
+
+
+def cleanup_chromium_browser_metrics() -> None:
+    """Clean up chromium's browser metrics."""
+
+    basicConfig(format=FORMAT, level=INFO)
+
+    if (browser_metrics_dir := chromium_browser_metrics_dir()).is_dir():
+        for file in browser_metrics_dir.iterdir():
+            if file.is_file():
+                file.unlink()
+                LOGGER.info('Removed file: %s', file)
 
 
 def cleanup_chromium_cache() -> None:
@@ -53,6 +69,12 @@ def chromium_config_dir() -> Path:
     """Return the current user's chromium config dir."""
 
     return Path.home() / '.config' / 'chromium'
+
+
+def chromium_browser_metrics_dir() -> Path:
+    """Return the current user's chromium browser metrics dir."""
+
+    return chromium_config_dir() / 'BrowserMetrics'
 
 
 def chromium_crash_reports_dir() -> Path:
