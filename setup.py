@@ -14,7 +14,11 @@ setup(
     maintainer='Richard Neumann',
     maintainer_email='<r.neumann@homeinfo.de>',
     packages=['html5ds'],
-    entry_points={'console_scripts': ['html5ds = html5ds.main:main']},
+    entry_points={'console_scripts': [
+        'html5ds = html5ds.main:main',
+        'cleanup-chromium-cache = html5ds.cleanup:cleanup_chromium_cache',
+        'cleanup-chromium-crash-logs = html5ds.main:cleanup_chromium_crash_logs'
+    ]},
     data_files=[('/usr/lib/systemd/system', ['html5ds.service'])],
     description=('Browser wrapper for HTML5 digital sigange applications.')
 )
