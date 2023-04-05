@@ -1,12 +1,11 @@
 [Unit]
 Description=Chromium data cleanup
-After=html5ds.service
-Conflicts=html5ds.service
 
 [Service]
 User=digsig
 Group=digsig
 Type=oneshot
+ExecStart=+/usr/bin/html5ds-stop
 ExecStart=-/usr/bin/cleanup-chromium-cache
 ExecStart=-/usr/bin/cleanup-chromium-crash-logs
 ExecStart=+/usr/bin/html5ds-restart

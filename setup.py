@@ -19,7 +19,8 @@ setup(
         'cleanup-chromium-cache = html5ds.cleanup:cleanup_chromium_cache',
         'cleanup-chromium-crash-logs = '
             'html5ds.cleanup:cleanup_chromium_crash_logs',
-        'html5ds-restart = html5ds.restart:main'
+        'html5ds-restart = html5ds.restart:restart',
+        'html5ds-stop = html5ds.restart:stop'
     ]},
     data_files=[
         ('/usr/lib/systemd/system', [
