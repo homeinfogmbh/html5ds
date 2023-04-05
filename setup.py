@@ -20,5 +20,5 @@ setup(
         'cleanup-chromium-crash-logs = html5ds.main:cleanup_chromium_crash_logs'
     ]},
     data_files=[('/usr/lib/systemd/system', ['html5ds.service'])],
-    description=('Browser wrapper for HTML5 digital sigange applications.')
+    description='Browser wrapper for HTML5 digital sigange applications.'
 )
