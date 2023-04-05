@@ -17,7 +17,9 @@ setup(
     entry_points={'console_scripts': [
         'html5ds = html5ds.main:main',
         'cleanup-chromium-cache = html5ds.cleanup:cleanup_chromium_cache',
-        'cleanup-chromium-crash-logs = html5ds.main:cleanup_chromium_crash_logs'
+        'cleanup-chromium-crash-logs = '
+            'html5ds.main:cleanup_chromium_crash_logs',
+        'html5ds-restart = html5ds.restart:main'
     ]},
     data_files=[
         ('/usr/lib/systemd/system', [
