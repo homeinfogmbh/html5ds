@@ -3,7 +3,18 @@
 from subprocess import CalledProcessError, CompletedProcess, run
 
 
-__all__ = ['is_enabled', 'start', 'stop', 'systemctl']
+__all__ = ['is_active', 'is_enabled', 'start', 'stop', 'systemctl']
+
+
+def is_active(unit: str) -> bool:
+    """Check whether the respective unit is active."""
+
+    try:
+        systemctl('is-active', unit)
+    except CalledProcessError:
+        return False
+
+    return True
 
 
 def is_enabled(unit: str) -> bool:
