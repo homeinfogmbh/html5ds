@@ -26,5 +26,5 @@ setup(
             'systemd-units/html5ds.service'
         ])
     ],
-    description='Browser wrapper for HTML5 digital sigange applications.'
+    description='Browser wrapper for HTML5 digital signage applications.'
 )
