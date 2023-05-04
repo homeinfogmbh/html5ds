@@ -24,12 +24,5 @@ setup(
             'html5ds-restart = html5ds.restart:restart'
         ]
     },
-    data_files=[
-        ('/usr/lib/systemd/system', [
-            'systemd-units/chromium-cleanup.service',
-            'systemd-units/chromium-cleanup.timer',
-            'systemd-units/html5ds.service'
-        ])
-    ],
     description='Browser wrapper for HTML5 digital signage applications.'
 )
