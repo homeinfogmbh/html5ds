@@ -3,11 +3,11 @@
 from html5ds import systemctl
 
 
-__all__ = ['restart']
+__all__ = ["restart"]
 
 
-TICK = 1    # seconds
-UNIT = 'html5ds.service'
+TICK = 1  # seconds
+UNIT = "html5ds.service"
 
 
 def restart() -> None:

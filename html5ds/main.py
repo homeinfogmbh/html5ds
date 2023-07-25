@@ -8,7 +8,7 @@ from html5ds.config import load
 from html5ds.logging import FORMAT, LOGGER
 
 
-__all__ = ['main']
+__all__ = ["main"]
 
 
 def main() -> int:
@@ -17,7 +17,7 @@ def main() -> int:
     basicConfig(format=FORMAT, level=INFO)
     load()
     command = tuple(get_command())
-    LOGGER.info('Running: %s', command)
+    LOGGER.info("Running: %s", command)
     env = get_environ()
-    LOGGER.info('Environment: %s', env)
+    LOGGER.info("Environment: %s", env)
     return run(command, env=env, check=False).returncode

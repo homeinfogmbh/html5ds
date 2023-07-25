@@ -3,7 +3,7 @@
 from typing import NamedTuple
 
 
-__all__ = ['Position', 'Resolution']
+__all__ = ["Position", "Resolution"]
 
 
 class Position(NamedTuple):
